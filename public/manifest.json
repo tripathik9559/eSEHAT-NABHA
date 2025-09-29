@@ -1,0 +1,328 @@
+{
+  "short_name": "Nabha Health",
+  "name": "Nabha Health - Rural Telemedicine Platform",
+  "description": "Connecting rural communities with quality healthcare through multilingual telemedicine, AI-powered symptom checking, and digital health records.",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon",
+      "purpose": "any"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "180x180",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-72x72.png",
+      "type": "image/png",
+      "sizes": "72x72",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-96x96.png",
+      "type": "image/png",
+      "sizes": "96x96",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-128x128.png",
+      "type": "image/png",
+      "sizes": "128x128",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-144x144.png",
+      "type": "image/png",
+      "sizes": "144x144",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-152x152.png",
+      "type": "image/png",
+      "sizes": "152x152",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-384x384.png",
+      "type": "image/png",
+      "sizes": "384x384",
+      "purpose": "any"
+    }
+  ],
+  "id": "/?source=pwa",
+  "start_url": "/?source=pwa",
+  "background_color": "#F9FAFB",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#3B82F6",
+  "orientation": "portrait-primary",
+  "categories": [
+    "health",
+    "medical",
+    "telemedicine",
+    "healthcare",
+    "rural",
+    "india"
+  ],
+  "lang": "en-IN",
+  "dir": "ltr",
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "shortcuts": [
+    {
+      "name": "Find Doctors",
+      "short_name": "Doctors",
+      "description": "Browse and consult with available doctors",
+      "url": "/doctors?source=shortcut",
+      "icons": [
+        {
+          "src": "shortcut-doctors.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Health Records",
+      "short_name": "Records",
+      "description": "View your digital health records",
+      "url": "/records?source=shortcut",
+      "icons": [
+        {
+          "src": "shortcut-records.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Symptom Checker",
+      "short_name": "Symptoms",
+      "description": "AI-powered symptom assessment",
+      "url": "/symptoms?source=shortcut",
+      "icons": [
+        {
+          "src": "shortcut-symptoms.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Medicine Tracker",
+      "short_name": "Medicines",
+      "description": "Track medicine availability and refills",
+      "url": "/medicines?source=shortcut",
+      "icons": [
+        {
+          "src": "shortcut-medicines.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Emergency",
+      "short_name": "Emergency",
+      "description": "Quick access to emergency services",
+      "url": "/emergency?source=shortcut",
+      "icons": [
+        {
+          "src": "shortcut-emergency.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshot-home.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "Home dashboard showing available doctors and quick actions"
+    },
+    {
+      "src": "screenshot-mobile-home.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "platform": "narrow",
+      "label": "Mobile home screen with multilingual support"
+    },
+    {
+      "src": "screenshot-doctors.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "Doctor consultation interface with video calling"
+    },
+    {
+      "src": "screenshot-mobile-doctors.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "platform": "narrow",
+      "label": "Mobile doctor list with availability status"
+    },
+    {
+      "src": "screenshot-records.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "Digital health records with QR code access"
+    },
+    {
+      "src": "screenshot-mobile-records.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "platform": "narrow",
+      "label": "Mobile health records with offline sync"
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.nabhahealth.app",
+      "id": "com.nabhahealth.app"
+    },
+    {
+      "platform": "itunes",
+      "url": "https://apps.apple.com/app/nabha-health/id123456789"
+    }
+  ],
+  "display_override": [
+    "window-controls-overlay",
+    "minimal-ui",
+    "standalone",
+    "browser"
+  ],
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  "protocol_handlers": [
+    {
+      "protocol": "web+nabhahealth",
+      "url": "/handle?protocol=%s"
+    },
+    {
+      "protocol": "web+telemedicine",
+      "url": "/consultation?protocol=%s"
+    }
+  ],
+  "file_handlers": [
+    {
+      "action": "/records/import",
+      "accept": {
+        "application/json": [".json"],
+        "text/csv": [".csv"],
+        "application/pdf": [".pdf"]
+      }
+    }
+  ],
+  "share_target": {
+    "action": "/share",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url",
+      "files": [
+        {
+          "name": "file",
+          "accept": [
+            "image/*",
+            "application/pdf",
+            "text/plain"
+          ]
+        }
+      ]
+    }
+  },
+  "handle_links": "preferred",
+  "capture_links": "existing-client-navigate",
+  "iarc_rating_id": "e84b072d-71b3-4d3e-86ae-31a8ce4e53b7",
+  "permissions_policy": {
+    "camera": ["self"],
+    "microphone": ["self"],
+    "geolocation": ["self"],
+    "notifications": ["self"]
+  },
+  "note_taking": {
+    "new_note_url": "/notes/new"
+  },
+  "widgets": [
+    {
+      "name": "Quick Stats",
+      "description": "View your health statistics at a glance",
+      "tag": "health-stats",
+      "template": "health-stats-template",
+      "ms_ac_template": "health-stats-adaptive-card.json",
+      "data": "/api/widget/stats",
+      "type": "application/json",
+      "screenshots": [
+        {
+          "src": "widget-stats.png",
+          "sizes": "256x256",
+          "label": "Health statistics widget showing doctor availability"
+        }
+      ],
+      "icons": [
+        {
+          "src": "widget-icon-stats.png",
+          "sizes": "64x64",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Medicine Reminders",
+      "description": "Track your medicine schedule",
+      "tag": "medicine-reminder",
+      "template": "medicine-reminder-template",
+      "ms_ac_template": "medicine-reminder-adaptive-card.json",
+      "data": "/api/widget/medicines",
+      "type": "application/json",
+      "update": 3600,
+      "screenshots": [
+        {
+          "src": "widget-medicines.png",
+          "sizes": "256x128",
+          "label": "Medicine reminder widget with refill alerts"
+        }
+      ],
+      "icons": [
+        {
+          "src": "widget-icon-medicine.png",
+          "sizes": "64x64",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "scope_extensions": [
+    {
+      "origin": "https://api.nabhahealth.com"
+    },
+    {
+      "origin": "https://cdn.nabhahealth.com"
+    }
+  ]
+}

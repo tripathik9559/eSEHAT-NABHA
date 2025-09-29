@@ -1,0 +1,110 @@
+# Netlify _redirects file for Nabha Telemedicine Platform
+# This file handles client-side routing for React Router
+
+# Main SPA redirect - handles all React Router routes
+/*    /index.html   200
+
+# API redirects (for future backend integration)
+/api/*  https://api.nabhahealth.com/:splat  200
+/auth/* https://auth.nabhahealth.com/:splat 200
+
+# Static asset optimization
+/static/* /static/:splat 200
+
+# Legacy redirects (in case of URL changes)
+/doctor/*     /doctors/:splat     301
+/patient/*    /records/:splat     301
+/medicine/*   /medicines/:splat   301
+/symptom/*    /symptoms/:splat    301
+
+# Language-specific redirects
+/hindi/*      /index.html         200
+/punjabi/*    /index.html         200
+/english/*    /index.html         200
+
+# Health check and monitoring endpoints
+/health       /index.html         200
+/status       /index.html         200
+/ping         /index.html         200
+
+# Admin routes
+/admin/*      /index.html         200
+/dashboard/*  /index.html         200
+
+# Mobile app deep links
+/app/*        /index.html         200
+/mobile/*     /index.html         200
+
+# QR code redirects (for health records)
+/qr/*         /index.html         200
+/record/*     /index.html         200
+
+# Emergency access routes
+/emergency/*  /index.html         200
+/urgent/*     /index.html         200
+
+# PWA routes
+/offline      /index.html         200
+/cache/*      /index.html         200
+
+# Error page fallbacks
+/404          /index.html         200
+/500          /index.html         200
+
+# Consultation routes
+/video/*      /index.html         200
+/audio/*      /index.html         200
+/chat/*       /index.html         200
+/call/*       /index.html         200
+
+# Telemedicine specific routes
+/consultation/* /index.html       200
+/appointment/*  /index.html       200
+/booking/*      /index.html       200
+
+# Location-based redirects (for rural areas)
+/nabha/*      /index.html         200
+/punjab/*     /index.html         200
+/rural/*      /index.html         200
+
+# Feature-specific routes
+/ai/*         /index.html         200
+/tracker/*    /index.html         200
+/pharmacy/*   /index.html         200
+
+# External redirects (for documentation, etc.)
+/docs         https://docs.nabhahealth.com/     301
+/help         https://help.nabhahealth.com/     301
+/support      https://support.nabhahealth.com/  301
+/github       https://github.com/nabha-health   301
+
+# Social media redirects
+/facebook     https://facebook.com/nabhahealth  301
+/twitter      https://twitter.com/nabhahealth   301
+/linkedin     https://linkedin.com/company/nabhahealth 301
+
+# Download redirects (for mobile apps)
+/android      https://play.google.com/store/apps/details?id=com.nabhahealth 301
+/ios          https://apps.apple.com/app/nabhahealth 301
+/download     /index.html         200
+
+# Webhook endpoints (for future integrations)
+/webhooks/*   https://api.nabhahealth.com/webhooks/:splat 200
+
+# File upload routes
+/upload/*     https://api.nabhahealth.com/upload/:splat 200
+
+# Analytics and tracking (privacy-compliant)
+/analytics/*  /index.html         200
+/track/*      /index.html         200
+
+# Accessibility routes
+/a11y/*       /index.html         200
+/accessibility/* /index.html      200
+
+# Testing routes (only in development)
+/test/*       /index.html         200  # Development only
+/demo/*       /index.html         200
+
+# Fallback for any unmatched routes
+*             /index.html         200

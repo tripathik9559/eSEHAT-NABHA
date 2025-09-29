@@ -1,0 +1,538 @@
+/* src/styles/components.css */
+
+/**
+ * Component-specific styles for Nabha Telemedicine
+ * Reusable styles for common UI components
+ */
+
+/* ============== BUTTONS ============== */
+
+.btn {
+  @apply px-4 py-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+}
+
+.btn-primary {
+  @apply bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500;
+}
+
+.btn-secondary {
+  @apply bg-gray-200 text-gray-800 hover:bg-gray-300 focus:ring-gray-500;
+}
+
+.btn-success {
+  @apply bg-green-600 text-white hover:bg-green-700 focus:ring-green-500;
+}
+
+.btn-danger {
+  @apply bg-red-600 text-white hover:bg-red-700 focus:ring-red-500;
+}
+
+.btn-warning {
+  @apply bg-yellow-500 text-white hover:bg-yellow-600 focus:ring-yellow-400;
+}
+
+.btn-outline {
+  @apply border-2 border-blue-600 text-blue-600 hover:bg-blue-50 focus:ring-blue-500;
+}
+
+.btn-sm {
+  @apply px-3 py-1.5 text-sm;
+}
+
+.btn-lg {
+  @apply px-6 py-3 text-lg;
+}
+
+.btn-disabled {
+  @apply opacity-50 cursor-not-allowed pointer-events-none;
+}
+
+.btn-icon {
+  @apply p-2 rounded-full hover:bg-gray-100 transition-colors duration-200;
+}
+
+/* ============== CARDS ============== */
+
+.card {
+  @apply bg-white rounded-lg shadow-md p-4 transition-shadow duration-200;
+}
+
+.card:hover {
+  @apply shadow-lg;
+}
+
+.card-compact {
+  @apply p-3;
+}
+
+.card-spacious {
+  @apply p-6;
+}
+
+.card-header {
+  @apply border-b border-gray-200 pb-3 mb-3;
+}
+
+.card-footer {
+  @apply border-t border-gray-200 pt-3 mt-3;
+}
+
+.card-clickable {
+  @apply cursor-pointer hover:shadow-xl transform hover:-translate-y-1;
+}
+
+/* ============== BADGES ============== */
+
+.badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+.badge-primary {
+  @apply bg-blue-100 text-blue-800;
+}
+
+.badge-success {
+  @apply bg-green-100 text-green-800;
+}
+
+.badge-warning {
+  @apply bg-yellow-100 text-yellow-800;
+}
+
+.badge-danger {
+  @apply bg-red-100 text-red-800;
+}
+
+.badge-info {
+  @apply bg-indigo-100 text-indigo-800;
+}
+
+.badge-gray {
+  @apply bg-gray-100 text-gray-800;
+}
+
+.badge-outline {
+  @apply border-2 bg-transparent;
+}
+
+/* ============== ALERTS ============== */
+
+.alert {
+  @apply p-4 rounded-lg mb-4 flex items-start gap-3;
+}
+
+.alert-success {
+  @apply bg-green-50 border border-green-200 text-green-800;
+}
+
+.alert-error {
+  @apply bg-red-50 border border-red-200 text-red-800;
+}
+
+.alert-warning {
+  @apply bg-yellow-50 border border-yellow-200 text-yellow-800;
+}
+
+.alert-info {
+  @apply bg-blue-50 border border-blue-200 text-blue-800;
+}
+
+.alert-icon {
+  @apply flex-shrink-0 w-5 h-5;
+}
+
+.alert-close {
+  @apply ml-auto -mr-1 -mt-1 p-1 rounded hover:bg-white/50 transition-colors;
+}
+
+/* ============== INPUTS ============== */
+
+.input {
+  @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200;
+}
+
+.input-error {
+  @apply border-red-500 focus:ring-red-500;
+}
+
+.input-sm {
+  @apply px-2 py-1.5 text-sm;
+}
+
+.input-lg {
+  @apply px-4 py-3 text-lg;
+}
+
+.input-group {
+  @apply flex items-center gap-2;
+}
+
+.input-addon {
+  @apply px-3 py-2 bg-gray-100 border border-gray-300 rounded-lg text-gray-600;
+}
+
+.textarea {
+  @apply input resize-none;
+}
+
+.checkbox {
+  @apply w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500;
+}
+
+.radio {
+  @apply w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500;
+}
+
+.select {
+  @apply input appearance-none bg-white cursor-pointer;
+}
+
+/* ============== FORM GROUPS ============== */
+
+.form-group {
+  @apply mb-4;
+}
+
+.form-label {
+  @apply block text-sm font-medium text-gray-700 mb-1;
+}
+
+.form-error {
+  @apply text-sm text-red-600 mt-1;
+}
+
+.form-help {
+  @apply text-sm text-gray-500 mt-1;
+}
+
+/* ============== MODALS ============== */
+
+.modal-overlay {
+  @apply fixed inset-0 bg-black bg-opacity-50 z-40 flex items-center justify-center p-4;
+}
+
+.modal {
+  @apply bg-white rounded-lg shadow-xl max-w-lg w-full max-h-[90vh] overflow-y-auto z-50;
+}
+
+.modal-header {
+  @apply px-6 py-4 border-b border-gray-200 flex items-center justify-between;
+}
+
+.modal-title {
+  @apply text-xl font-semibold text-gray-900;
+}
+
+.modal-body {
+  @apply px-6 py-4;
+}
+
+.modal-footer {
+  @apply px-6 py-4 border-t border-gray-200 flex items-center justify-end gap-3;
+}
+
+/* ============== TABS ============== */
+
+.tabs {
+  @apply flex border-b border-gray-200 overflow-x-auto;
+}
+
+.tab {
+  @apply px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 hover:border-gray-300 border-b-2 border-transparent transition-colors whitespace-nowrap;
+}
+
+.tab-active {
+  @apply text-blue-600 border-blue-600;
+}
+
+.tab-content {
+  @apply py-4;
+}
+
+/* ============== AVATARS ============== */
+
+.avatar {
+  @apply rounded-full bg-gray-300 flex items-center justify-center overflow-hidden;
+}
+
+.avatar-sm {
+  @apply w-8 h-8 text-xs;
+}
+
+.avatar-md {
+  @apply w-12 h-12 text-sm;
+}
+
+.avatar-lg {
+  @apply w-16 h-16 text-base;
+}
+
+.avatar-xl {
+  @apply w-24 h-24 text-lg;
+}
+
+.avatar-online::after {
+  content: '';
+  @apply absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full;
+}
+
+/* ============== LOADING STATES ============== */
+
+.skeleton {
+  @apply bg-gray-200 animate-pulse rounded;
+}
+
+.skeleton-text {
+  @apply h-4 w-full skeleton;
+}
+
+.skeleton-circle {
+  @apply rounded-full skeleton;
+}
+
+.spinner {
+  @apply inline-block w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin;
+}
+
+.spinner-lg {
+  @apply w-8 h-8 border-4;
+}
+
+/* ============== DIVIDERS ============== */
+
+.divider {
+  @apply border-t border-gray-200 my-4;
+}
+
+.divider-vertical {
+  @apply border-l border-gray-200 mx-4 h-full;
+}
+
+.divider-text {
+  @apply flex items-center text-sm text-gray-500 my-4;
+}
+
+.divider-text::before,
+.divider-text::after {
+  content: '';
+  @apply flex-1 border-t border-gray-200;
+}
+
+.divider-text::before {
+  @apply mr-3;
+}
+
+.divider-text::after {
+  @apply ml-3;
+}
+
+/* ============== TOOLTIPS ============== */
+
+.tooltip {
+  @apply absolute z-50 px-2 py-1 text-xs text-white bg-gray-900 rounded shadow-lg pointer-events-none opacity-0 transition-opacity duration-200;
+}
+
+.tooltip-visible {
+  @apply opacity-100;
+}
+
+/* ============== PROGRESS BARS ============== */
+
+.progress {
+  @apply w-full bg-gray-200 rounded-full h-2 overflow-hidden;
+}
+
+.progress-bar {
+  @apply h-full bg-blue-600 transition-all duration-300 rounded-full;
+}
+
+.progress-sm {
+  @apply h-1;
+}
+
+.progress-lg {
+  @apply h-4;
+}
+
+/* ============== LIST ITEMS ============== */
+
+.list {
+  @apply divide-y divide-gray-200;
+}
+
+.list-item {
+  @apply py-3 hover:bg-gray-50 transition-colors;
+}
+
+.list-item-clickable {
+  @apply cursor-pointer;
+}
+
+/* ============== DROPDOWNS ============== */
+
+.dropdown {
+  @apply relative inline-block;
+}
+
+.dropdown-menu {
+  @apply absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-50;
+}
+
+.dropdown-item {
+  @apply px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer transition-colors;
+}
+
+.dropdown-divider {
+  @apply border-t border-gray-200 my-1;
+}
+
+/* ============== STAT CARDS ============== */
+
+.stat-card {
+  @apply card flex items-center justify-between;
+}
+
+.stat-value {
+  @apply text-3xl font-bold text-gray-900;
+}
+
+.stat-label {
+  @apply text-sm text-gray-600 mt-1;
+}
+
+.stat-icon {
+  @apply w-12 h-12 rounded-full flex items-center justify-center;
+}
+
+/* ============== DOCTOR CARD SPECIFIC ============== */
+
+.doctor-card {
+  @apply card card-clickable;
+}
+
+.doctor-badge {
+  @apply badge badge-success;
+}
+
+.doctor-rating {
+  @apply flex items-center gap-1 text-yellow-500;
+}
+
+/* ============== MEDICINE CARD SPECIFIC ============== */
+
+.medicine-card {
+  @apply card flex items-start gap-4;
+}
+
+.medicine-icon {
+  @apply w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600;
+}
+
+.medicine-time {
+  @apply text-sm font-medium text-gray-700;
+}
+
+/* ============== HEALTH RECORD CARD ============== */
+
+.record-card {
+  @apply card hover:border-blue-300 border-2 border-transparent;
+}
+
+.record-type-icon {
+  @apply w-10 h-10 rounded-full flex items-center justify-center text-white font-semibold;
+}
+
+/* ============== CONSULTATION CARD ============== */
+
+.consultation-card {
+  @apply card border-l-4;
+}
+
+.consultation-scheduled {
+  @apply border-l-blue-500;
+}
+
+.consultation-completed {
+  @apply border-l-green-500;
+}
+
+.consultation-cancelled {
+  @apply border-l-red-500;
+}
+
+/* ============== EMPTY STATES ============== */
+
+.empty-state {
+  @apply text-center py-12 px-4;
+}
+
+.empty-state-icon {
+  @apply w-16 h-16 mx-auto text-gray-400 mb-4;
+}
+
+.empty-state-title {
+  @apply text-lg font-medium text-gray-900 mb-2;
+}
+
+.empty-state-description {
+  @apply text-sm text-gray-600;
+}
+
+/* ============== RESPONSIVE UTILITIES ============== */
+
+@media (max-width: 640px) {
+  .card {
+    @apply p-3;
+  }
+  
+  .modal {
+    @apply max-w-full m-2;
+  }
+  
+  .btn-lg {
+    @apply px-4 py-2 text-base;
+  }
+}
+
+/* ============== ANIMATIONS ============== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* ============== PRINT STYLES ============== */
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .card {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+}
