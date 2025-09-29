@@ -2606,7 +2606,7 @@ function NabhaTelemedicine() {
           </div>
           <div className="border-t border-gray-200 mt-8 pt-8 text-center">
             <p className="text-gray-500 text-sm">
-              © 2024 Nabha Telemedicine Platform. Built for SIH2025. Demo version.
+               eSEHATNABHA by Team HACKVEDA.
             </p>
           </div>
         </div>

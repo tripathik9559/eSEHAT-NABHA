@@ -19,7 +19,7 @@ const Footer = () => {
                   <span className="text-white text-xs">🏥</span>
                 </div>
                 <p className="text-sm font-medium text-gray-700">
-                  {translate('footer.copyright', '© 2025 SIH Project')}
+                  {translate('footer.copyright', 'TEAM HACKVEDA')}
                 </p>
               </div>
               <p className="text-xs text-gray-500 text-center md:text-left">
