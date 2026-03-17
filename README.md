@@ -1,4 +1,4 @@
-
+This project is just a hands on practice on Javascript
 ```
 Nabha
 ├─ DEPLOYMENT.md
