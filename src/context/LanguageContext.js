@@ -1,72 +1,40 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState } from 'react';
+import { TRANSLATIONS } from '../data/demoData';
 
-export const LanguageContext = createContext();
-
-
+const LanguageContext = createContext();
 
 export const useLanguage = () => {
   const context = useContext(LanguageContext);
-  if (!context) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
-  }
+  if (!context) throw new Error('useLanguage must be used within LanguageProvider');
   return context;
 };
 
 export const LanguageProvider = ({ children }) => {
-  const [currentLanguage, setCurrentLanguage] = useState('en');
-  const [translations, setTranslations] = useState({});
+  const [language, setLanguage] = useState(() => {
+    return localStorage.getItem('esehat_lang') || 'en';
+  });
 
-  // Load translations on language change
-  useEffect(() => {
-    const loadTranslations = async () => {
-      try {
-        const translationModule = await import('../data/translations.js');
-        setTranslations(translationModule.default || translationModule.translations);
-      } catch (error) {
-        console.error('Error loading translations:', error);
-        setTranslations({});
-      }
-    };
-    
-    loadTranslations();
-  }, [currentLanguage]);
-
-  // Get saved language from localStorage on mount
-  useEffect(() => {
-    const savedLanguage = localStorage.getItem('selectedLanguage');
-    if (savedLanguage && ['en', 'hi', 'pa'].includes(savedLanguage)) {
-      setCurrentLanguage(savedLanguage);
-    }
-  }, []);
-
-  const changeLanguage = (languageCode) => {
-    if (['en', 'hi', 'pa'].includes(languageCode)) {
-      setCurrentLanguage(languageCode);
-      localStorage.setItem('selectedLanguage', languageCode);
-    }
+  const t = (key) => {
+    const lang = TRANSLATIONS[language] || TRANSLATIONS.en;
+    return lang[key] || TRANSLATIONS.en[key] || key;
   };
 
-  const translate = (key, fallback = key) => {
-    if (!translations[currentLanguage]) {
-      return fallback;
-    }
-    return translations[currentLanguage][key] || fallback;
+  const changeLanguage = (lang) => {
+    setLanguage(lang);
+    localStorage.setItem('esehat_lang', lang);
   };
 
-  const value = {
-    currentLanguage,
-    changeLanguage,
-    translate,
-    availableLanguages: [
-      { code: 'en', name: 'English', nativeName: 'English' },
-      { code: 'hi', name: 'Hindi', nativeName: 'हिंदी' },
-      { code: 'pa', name: 'Punjabi', nativeName: 'ਪੰਜਾਬੀ' }
-    ]
-  };
+  const languages = [
+    { code: 'en', label: 'English', nativeLabel: 'English', flag: '🇬🇧' },
+    { code: 'hi', label: 'Hindi', nativeLabel: 'हिंदी', flag: '🇮🇳' },
+    { code: 'pa', label: 'Punjabi', nativeLabel: 'ਪੰਜਾਬੀ', flag: '🏳️' },
+  ];
 
   return (
-    <LanguageContext.Provider value={value}>
+    <LanguageContext.Provider value={{ language, t, changeLanguage, languages }}>
       {children}
     </LanguageContext.Provider>
   );
 };
+
+export default LanguageContext;

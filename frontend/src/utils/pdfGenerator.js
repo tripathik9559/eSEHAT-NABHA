@@ -1,0 +1,151 @@
+import { jsPDF } from 'jspdf'
+
+export function generatePrescriptionPDF({ doctor, patient, medicines = [], notes = '', apptId }) {
+  const doc  = new jsPDF({ unit: 'mm', format: 'a4' })
+  const W    = 210
+  const blue = [37, 99, 235]
+  const dark = [15, 23, 42]
+  const gray = [100, 116, 139]
+
+  let y = 0
+
+  // ── Header Band ──────────────────────────────────────────────────────────────
+  doc.setFillColor(...blue)
+  doc.rect(0, 0, W, 36, 'F')
+
+  doc.setTextColor(255, 255, 255)
+  doc.setFontSize(18)
+  doc.setFont('helvetica', 'bold')
+  doc.text('eSEHAT NABHA', 14, 14)
+
+  doc.setFontSize(9)
+  doc.setFont('helvetica', 'normal')
+  doc.text('Civil Hospital Nabha, Punjab — Digitally Powered Healthcare', 14, 21)
+  doc.text('Phone: 0175-2200000  |  www.esehaatnabha.gov.in', 14, 27)
+
+  doc.setFontSize(11)
+  doc.setFont('helvetica', 'bold')
+  doc.text('PRESCRIPTION', W - 14, 16, { align: 'right' })
+  doc.setFontSize(8)
+  doc.setFont('helvetica', 'normal')
+  doc.text(`Rx #${apptId || Math.floor(Math.random() * 90000 + 10000)}`, W - 14, 22, { align: 'right' })
+  doc.text(`Date: ${new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })}`, W - 14, 28, { align: 'right' })
+
+  y = 44
+
+  // ── Doctor Info ───────────────────────────────────────────────────────────────
+  doc.setTextColor(...dark)
+  doc.setFontSize(11)
+  doc.setFont('helvetica', 'bold')
+  doc.text(doctor?.name || 'Doctor', 14, y)
+  doc.setFontSize(9)
+  doc.setFont('helvetica', 'normal')
+  doc.setTextColor(...gray)
+  doc.text(`${doctor?.specialization || 'Specialization'} | Civil Hospital Nabha`, 14, y + 5)
+  doc.text(`Reg. No: MCI-${Math.floor(Math.random() * 900000 + 100000)}`, 14, y + 10)
+
+  y += 18
+
+  // ── Divider ───────────────────────────────────────────────────────────────────
+  doc.setDrawColor(226, 232, 240)
+  doc.line(14, y, W - 14, y)
+  y += 6
+
+  // ── Patient Info ──────────────────────────────────────────────────────────────
+  doc.setFillColor(248, 250, 252)
+  doc.roundedRect(14, y, W - 28, 24, 3, 3, 'F')
+  doc.setTextColor(...dark)
+  doc.setFontSize(9)
+  doc.setFont('helvetica', 'bold')
+  doc.text('PATIENT DETAILS', 20, y + 7)
+
+  doc.setFont('helvetica', 'normal')
+  doc.setTextColor(...gray)
+  const patName = patient?.name || 'Patient'
+  const patId   = patient?.qr_id || patient?.id || '—'
+  const patAge  = patient?.age   ? `${patient.age} yrs` : '—'
+  const patBG   = patient?.blood_group || '—'
+
+  doc.text(`Name: `, 20, y + 14)
+  doc.setTextColor(...dark)
+  doc.setFont('helvetica', 'bold')
+  doc.text(patName, 35, y + 14)
+
+  doc.setFont('helvetica', 'normal')
+  doc.setTextColor(...gray)
+  doc.text(`ID: ${patId}`, 100, y + 14)
+  doc.text(`Age: ${patAge}  |  Blood Group: ${patBG}`, 20, y + 20)
+
+  y += 32
+
+  // ── Medicines Table ───────────────────────────────────────────────────────────
+  doc.setTextColor(...dark)
+  doc.setFontSize(10)
+  doc.setFont('helvetica', 'bold')
+  doc.text('℞ PRESCRIBED MEDICINES', 14, y)
+  y += 5
+
+  // Table header
+  doc.setFillColor(...blue)
+  doc.rect(14, y, W - 28, 8, 'F')
+  doc.setTextColor(255, 255, 255)
+  doc.setFontSize(8)
+  doc.text('Medicine Name',  18, y + 5.5)
+  doc.text('Dosage',        100, y + 5.5)
+  doc.text('Duration',      150, y + 5.5)
+  y += 8
+
+  // Table rows
+  medicines.forEach((med, i) => {
+    const bg = i % 2 === 0 ? [248, 250, 252] : [255, 255, 255]
+    doc.setFillColor(...bg)
+    doc.rect(14, y, W - 28, 9, 'F')
+    doc.setTextColor(...dark)
+    doc.setFontSize(9)
+    doc.setFont('helvetica', 'bold')
+    doc.text(`${i + 1}. ${med.name}`, 18, y + 6)
+    doc.setFont('helvetica', 'normal')
+    doc.setTextColor(...gray)
+    doc.text(med.dosage || '—',   100, y + 6)
+    doc.text(med.duration || '—', 150, y + 6)
+    y += 9
+  })
+
+  doc.setDrawColor(226, 232, 240)
+  doc.rect(14, y - medicines.length * 9 - 8, W - 28, medicines.length * 9 + 8)
+
+  y += 8
+
+  // ── Notes ─────────────────────────────────────────────────────────────────────
+  if (notes) {
+    doc.setTextColor(...dark)
+    doc.setFontSize(9)
+    doc.setFont('helvetica', 'bold')
+    doc.text('INSTRUCTIONS / NOTES', 14, y)
+    y += 5
+    doc.setFont('helvetica', 'normal')
+    doc.setTextColor(...gray)
+    const lines = doc.splitTextToSize(notes, W - 28)
+    doc.text(lines, 14, y)
+    y += lines.length * 5 + 4
+  }
+
+  // ── Signature ─────────────────────────────────────────────────────────────────
+  y = Math.max(y + 10, 230)
+  doc.setDrawColor(100, 116, 139)
+  doc.line(W - 80, y, W - 14, y)
+  doc.setTextColor(...gray)
+  doc.setFontSize(8)
+  doc.text(`Dr. ${doctor?.name || ''}`, W - 14, y + 5, { align: 'right' })
+  doc.text('Doctor Signature', W - 14, y + 10, { align: 'right' })
+
+  // ── Footer ────────────────────────────────────────────────────────────────────
+  doc.setFillColor(248, 250, 252)
+  doc.rect(0, 275, W, 22, 'F')
+  doc.setTextColor(...gray)
+  doc.setFontSize(7)
+  doc.text('This prescription is digitally generated by eSEHAT Nabha. Valid only with doctor signature.', W / 2, 282, { align: 'center' })
+  doc.text('Civil Hospital Nabha · eSEHAT Nabha Healthcare Platform · Powered by AI', W / 2, 287, { align: 'center' })
+
+  doc.save(`prescription-${apptId || 'rx'}-${Date.now()}.pdf`)
+}
