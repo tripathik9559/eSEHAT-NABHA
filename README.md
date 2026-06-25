@@ -168,12 +168,24 @@ PORT=5000
 
 ## 🗺️ Roadmap (MVP Build Phases)
 
+<<<<<<< HEAD
 - [x] Phase 1 — Auth (OTP), Patient Portal UI, rule-based Symptom Checker, Priority Queue logic
 - [ ] Phase 2 — Backend API + PostgreSQL integration, connect symptom checker to real data
 - [ ] Phase 3 — Doctor Portal, priority-sorted appointment booking, video consultation (Jitsi/Daily.co)
 - [ ] Phase 4 — Offline sync (IndexedDB + Service Worker, conflict resolution)
 - [ ] Phase 5 — Pharmacy + Admin dashboards (Workload + Analytics)
 - [ ] Phase 6 — ASHA portal, Health Camps, QR Health Card
+=======
+## 🗺️ Roadmap (MVP Build Phases)
+
+- [x] Phase 1 — Auth (OTP), Patient Portal UI, rule-based Symptom Checker, Priority Queue logic
+- [x] Phase 2 — Backend API + PostgreSQL integration, connect symptom checker to real data
+- [x] Phase 3 — Doctor Portal, priority-sorted appointment booking, video consultation (Jitsi/Daily.co)
+- [x] Phase 4 — Offline sync (IndexedDB + Service Worker, conflict resolution)
+- [x] Phase 5 — Pharmacy + Admin dashboards (Workload + Analytics)
+- [x] Phase 6 — ASHA portal, Health Camps, QR Health Card
+- [ ] Phase 7 — Testing & Debugging: end-to-end QA across all portals, fixing edge cases, performance tuning before final release
+>>>>>>> 6e170210f74bc5f586188663a71acccb2ac30db4
 
 ---
 
