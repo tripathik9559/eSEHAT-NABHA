@@ -1,234 +1,207 @@
-# eSEHAT Nabha 🏥
+# 🏥 eSEHAT NABHA
 
-**AI-Powered, Multilingual, Offline-First Rural Healthcare Platform**  
-Civil Hospital Nabha, Punjab — Serving 173 villages
+<div align="center">
+
+![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-Express-339933?style=for-the-badge&logo=node.js&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)
+![PWA](https://img.shields.io/badge/PWA-Offline%20First-5A0FC8?style=for-the-badge&logo=pwa&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/Tailwind-CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
+
+<br/>
+
+> **An AI-powered, multilingual, offline-first rural healthcare platform**  
+> Connecting Patients, Doctors, ASHA Workers, Pharmacies & Health Administrators
+
+</div>
 
 ---
 
-## Overview
-
-eSEHAT Nabha digitises rural healthcare delivery for Nabha, Punjab. It provides five role-based portals (Patient, Doctor, ASHA, Admin, Pharmacy) with features including AI symptom checking, telemedicine via Jitsi, QR health cards, PDF prescriptions, offline-first architecture, and full Punjabi/Hindi/English localisation.
+> [!WARNING]
+> ## 🚧 ACTIVELY UNDER UPGRADE — NOT PRODUCTION READY 🚧
+>
+> **This project is being rebuilt and significantly upgraded from its original version. Several modules listed below are in active development.**
+>
+> Originally submitted to **Smart India Hackathon (SIH) 2025** — was not selected as the initial build was basic. Rather than abandoning it, I'm  rebuilding it into a more complete, production-grade system with my team.
+>
+> ⚠️ Do not deploy for real healthcare use. Educational / portfolio project only.
 
 ---
 
-## Quick Start
+## 📌 The Problem
+
+**Nabha, Punjab** and its surrounding **173 villages** face severe healthcare accessibility challenges:
+
+- Civil Hospital Nabha runs with only **11 doctors against 23 sanctioned posts**
+- Patients travel long distances only to find specialists unavailable or medicines out of stock
+- Poor road infrastructure adds delays; daily-wage workers and farmers lose income on repeat visits
+- No digital health records — only **31% of rural Punjab households** have internet access
+- Result: treatment delays, rising costs, worsening patient outcomes
+
+---
+
+## 💡 The Solution
+
+eSEHAT Nabha is a **multilingual, AI-powered, offline-first** healthcare ecosystem connecting Patients, Doctors, ASHA Workers, Pharmacies, and Health Administrators on one platform.
+
+### Core Patient Module
+- 📱 Mobile + OTP login, rural-friendly onboarding
+- 🌐 Punjabi / Hindi / English — real-time language switching
+- 🎤 Voice-based symptom input (low-literacy friendly)
+- 🩺 AI Symptom Checker + **AI Risk Engine** (🟢 Mild / 🟡 Moderate / 🔴 High Risk)
+- 📋 Digital Health Record Vault
+- 🆔 QR-based Health Card — instant history lookup by doctors
+- 🎥 Telemedicine — video/audio consultation with **audio auto-fallback** in low bandwidth
+- ⚡ **Smart Priority Queue** — high-risk patients get immediate slots, directly addressing doctor shortage
+- 📴 Offline-first — IndexedDB + Service Workers, auto-sync when online
+
+### Medicine & Pharmacy
+- Medicine availability tracker across pharmacies
+- Pharmacy locator + owner dashboard for stock management
+
+### Doctor Module
+- Daily appointments & active case dashboard
+- Digital prescription generator (PDF, auto-saved)
+- Full patient history viewer
+
+### ASHA Worker Module
+- Patient registration & health info updates
+- Village health camp scheduling & tracking
+
+### Admin / Health Department
+- Doctor availability & workload dashboards
+- Rural health analytics — demand patterns, village-wise insights, resource planning
+
+---
+
+## 🏗️ Architecture
+
+```
+┌─────────────────────────────────────┐
+│   FRONTEND (React + TS + Tailwind)   │  → Netlify
+│   Patient / Doctor / ASHA / Admin    │
+│   Portals + PWA + Offline Layer      │
+└──────────────┬────────────────────────┘
+               │ REST APIs
+┌──────────────▼────────────────────────┐
+│   BACKEND (Node.js / Express)         │  → Render
+│   Auth · Appointments · Pharmacy      │
+│   AI Symptom/Risk Engine · Priority Q │
+└──────────────┬────────────────────────┘
+               │
+┌──────────────▼────────────────────────┐
+│   DATABASE (PostgreSQL via Supabase)  │
+│   Patients · Doctors · Appointments   │
+│   Prescriptions · HealthRecords       │
+│   Pharmacies · Medicines · SymptomLogs│
+└─────────────────────────────────────┘
+
+      + OFFLINE LAYER (Client-side)
+      IndexedDB + Service Worker
+      (queues writes, syncs when online)
+```
+
+### Database Schema (PostgreSQL / Supabase)
+```
+patients        (id, name, phone, language_pref, qr_id, created_at)
+doctors         (id, name, specialization, department, available_status)
+appointments    (id, patient_id, doctor_id, datetime, mode, status, priority_level)
+prescriptions   (id, appointment_id, content, pdf_url, created_at)
+health_records  (id, patient_id, type, data, created_at)
+pharmacies      (id, name, location_lat, location_lng, contact)
+medicines       (id, pharmacy_id, name, stock_status, last_updated)
+symptom_logs    (id, patient_id, symptoms, risk_level, timestamp)
+health_camps    (id, village, date, status)
+```
+
+---
+
+## 🔧 Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Frontend | React + TypeScript, Tailwind CSS, React Router, React Query |
+| Charts | Recharts |
+| Backend | Node.js + Express |
+| Database | PostgreSQL (Supabase) |
+| Offline | IndexedDB + Service Workers (PWA) |
+| Video Call | Jitsi Meet SDK / Daily.co |
+| Frontend Hosting | Netlify |
+| Backend Hosting | Render |
+
+---
+
+## 🚀 Quick Start
 
 ### Prerequisites
 - Node.js 18+
-- Python 3.10+
-- pip
+- npm / yarn
+- Supabase account (PostgreSQL)
 
----
+### Frontend
+```bash
+git clone https://github.com/tripathik9559/eSEHAT-NABHA.git
+cd eSEHAT-NABHA
+npm install
+npm run dev
+```
 
-## Backend Setup
-
+### Backend
 ```bash
 cd backend
-
-# 1. Copy environment file
-cp .env.example .env
-
-# 2. Install dependencies
-pip install -r requirements.txt
-
-# 3. Start server (SQLite used automatically when DATABASE_URL is blank)
-uvicorn main:app --reload --host 0.0.0.0 --port 8000
-```
-
-- API docs: http://localhost:8000/docs  
-- Health check: http://localhost:8000/health  
-- Demo data is seeded automatically on first startup.
-
----
-
-## Frontend Setup
-
-```bash
-cd frontend
-
-# 1. Copy environment file
-cp .env.example .env
-# Edit VITE_API_URL if backend runs on a different port
-
-# 2. Install dependencies
 npm install
-
-# 3. Start development server
+cp .env.example .env
+# Add SUPABASE_URL, SUPABASE_KEY, JWT_SECRET
 npm run dev
-# Opens at http://localhost:5173
+```
 
-# 4. Production build
-npm run build
+### Environment Variables (`.env`)
+```env
+SUPABASE_URL=your-supabase-url
+SUPABASE_KEY=your-supabase-key
+JWT_SECRET=your-jwt-secret
+PORT=5000
 ```
 
 ---
 
-## Demo Credentials
+## 🗺️ Roadmap (MVP Build Phases)
 
-| Role     | Phone         | OTP  | Notes                       |
-|----------|---------------|------|-----------------------------|
-| Patient  | 9876500001    | 1234 | Gurpreet Singh (High risk)  |
-| Doctor   | 9876501001    | 1234 | Dr. Rajesh Sharma           |
-| ASHA     | 9876503001    | 1234 | ASHA Worker                 |
-| Admin    | 9876503002    | 1234 | Civil Hospital Admin        |
-| Pharmacy | 9876503003    | 1234 | Civil Hospital Pharmacy     |
-
-Any 10-digit number + OTP **1234** works in demo mode.
+- [x] Phase 1 — Auth (OTP), Patient Portal UI, rule-based Symptom Checker, Priority Queue logic
+- [ ] Phase 2 — Backend API + PostgreSQL integration, connect symptom checker to real data
+- [ ] Phase 3 — Doctor Portal, priority-sorted appointment booking, video consultation (Jitsi/Daily.co)
+- [ ] Phase 4 — Offline sync (IndexedDB + Service Worker, conflict resolution)
+- [ ] Phase 5 — Pharmacy + Admin dashboards (Workload + Analytics)
+- [ ] Phase 6 — ASHA portal, Health Camps, QR Health Card
 
 ---
 
-## Features
+## 🌍 Impact
 
-### Patient Portal
-- OTP login (demo: 1234)
-- AI Symptom Checker with voice input (hi-IN / pa-IN / en-IN)
-- Book/reschedule/cancel appointments with priority levels
-- QR Health Card — print + download PNG
-- Telemedicine via Jitsi (video + audio, low-bandwidth toggle)
-- Health Records Vault (offline via IndexedDB)
-- Medicine Finder across pharmacies
-
-### Doctor Portal
-- Priority Queue (High → Moderate → Mild)
-- Appointment management with status updates
-- PDF Prescription generator (jsPDF)
-- Full patient history view
-
-### ASHA Worker Portal
-- Register new patients
-- Schedule and manage health camps
-- Assist patients with telemedicine
-
-### Admin Portal
-- System analytics (SVG charts, no recharts)
-- Doctor availability real-time toggle
-- Doctor workload and utilization
-- Village demand statistics
-
-### Pharmacy Portal
-- Medicine inventory management
-- Stock status updates (Available / Low / Out)
-- Pharmacy locator with stock view
+| Beneficiary | Impact |
+|-------------|--------|
+| Rural Patients & Farmers | Reduced travel, faster access to care |
+| Doctors | Better workload distribution via priority queue |
+| ASHA Workers | Streamlined registration & camp management |
+| Pharmacies | Real-time stock visibility, reduced stockouts |
+| Health Department | Data-driven resource planning |
 
 ---
 
-## Neon PostgreSQL Setup
+## 🏆 Origin — Smart India Hackathon 2025
 
-1. Create a free project at https://neon.tech
-2. Copy the connection string
-3. Set in `backend/.env`:
-   ```
-   DATABASE_URL=postgresql://user:password@ep-xxx.us-east-1.aws.neon.tech/nabha?sslmode=require
-   ```
-4. On first start, all tables are auto-created via SQLAlchemy
+This project was submitted to **SIH 2025** as a basic prototype, which was **not selected** due to limited scope at the time. Rather than letting it sit, we're rebuilding it into a fuller, production-grade platform — covering offline-first architecture, AI risk classification, and a complete multi-role portal system.
 
 ---
 
-## Twilio SMS OTP (Optional — Production Only)
+## 👨‍💻 Author
 
-1. Create a Twilio account at https://twilio.com
-2. Get Account SID, Auth Token, and a phone number
-3. Set in `backend/.env`:
-   ```
-   TWILIO_ACCOUNT_SID=ACxxxxxxxxxxxxxxxx
-   TWILIO_AUTH_TOKEN=your_auth_token
-   TWILIO_PHONE_NUMBER=+1xxxxxxxxxx
-   ```
-4. When set, real SMS OTPs are sent; otherwise demo OTP 1234 is used.
+**Kartikey Kumar Tripathi**  
+B.Tech CSE — BBDNIIT, Lucknow (2026 Batch)
 
 ---
 
-## Deploy to Netlify (Frontend)
+## 📝 License
 
-```bash
-cd frontend
-npm run build
-
-# Deploy dist/ folder to Netlify
-# Or connect GitHub repo and set:
-#   Build command: npm run build
-#   Publish dir: dist
-#   Environment variable: VITE_API_URL=https://your-backend.onrender.com
-```
-
----
-
-## Deploy to Render (Backend)
-
-1. Push backend/ to GitHub
-2. Create a new **Web Service** on Render
-3. Settings:
-   - **Build command:** `pip install -r requirements.txt`
-   - **Start command:** `uvicorn main:app --host 0.0.0.0 --port $PORT`
-4. Add environment variables:
-   - `DATABASE_URL` — Neon PostgreSQL URL
-   - `SECRET_KEY` — random 32-char string
-   - `CORS_ORIGINS` — your Netlify URL
-
----
-
-## Architecture
-
-```
-Nabha/
-├── backend/
-│   ├── main.py                  # FastAPI app, startup seed
-│   ├── requirements.txt
-│   └── app/
-│       ├── core/                # config, database, security (JWT)
-│       ├── models/              # SQLAlchemy ORM models
-│       ├── schemas/             # Pydantic request/response schemas
-│       ├── repositories/        # DB queries only
-│       ├── services/            # Business logic (AI risk engine, analytics)
-│       ├── routers/             # HTTP endpoints
-│       └── seed.py              # Demo data
-│
-└── frontend/
-    ├── src/
-    │   ├── App.jsx              # Routes + auth guards
-    │   ├── contexts/            # Auth, Theme, Language contexts
-    │   ├── services/api.js      # Axios API layer
-    │   ├── i18n/translations.js # en / hi / pa strings
-    │   ├── utils/               # helpers, pdfGenerator, indexedDB
-    │   ├── components/
-    │   │   ├── layout/          # TopBar, Sidebar, Layout
-    │   │   ├── common/          # Shared UI components
-    │   │   └── charts/          # Pure SVG BarChart, LineChart, DonutChart
-    │   └── pages/               # One folder per role
-    └── public/sw.js             # Service Worker (offline-first)
-```
-
-**Backend pattern:** Router → Service → Repository → Database  
-**Frontend:** React + Vite + Tailwind CSS (darkMode: class)  
-**Auth:** JWT (HS256), stored in localStorage  
-**Offline:** IndexedDB + Service Worker + auto-sync queue  
-
----
-
-## AI Risk Engine
-
-Rule-based keyword matching — no ML model required, always works offline.
-
-| Symptoms Detected | Risk Level | Action |
-|-------------------|------------|--------|
-| Chest pain, stroke, seizure, severe bleeding… | High | Immediate emergency visit |
-| Fever, vomiting, abdominal pain, weakness… | Moderate | Book within 24–48 hours |
-| Cold, runny nose, mild cough… | Mild | Routine visit |
-
----
-
-## Tech Stack
-
-| Layer      | Technology                          |
-|------------|-------------------------------------|
-| Frontend   | React 18, Vite, Tailwind CSS        |
-| Backend    | FastAPI, Uvicorn, SQLAlchemy        |
-| Database   | SQLite (local) / Neon PostgreSQL    |
-| Auth       | JWT (python-jose)                   |
-| Video      | Jitsi Meet External API             |
-| PDF        | jsPDF                               |
-| QR Code    | qrcode.react                        |
-| Voice      | Web Speech API                      |
-| Offline    | IndexedDB + Service Worker          |
-| Charts     | Pure SVG (no recharts)              |
-| i18n       | Custom: English / Hindi / Punjabi   |
+For educational and portfolio purposes only.
